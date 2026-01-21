@@ -1,6 +1,6 @@
 {
   "name": "mani-calc",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Spotlight-style instant calculator for Windows Search | Math, natural language & unit conversions | Offline-first productivity tool",
   "main": "src/index.js",
   "bin": {
