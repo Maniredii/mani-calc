@@ -1,0 +1,44 @@
+{
+  "name": "mani-calc",
+  "version": "1.0.0",
+  "description": "Spotlight-style instant calculator for Windows Search | Math, natural language & unit conversions | Offline-first productivity tool",
+  "main": "src/index.js",
+  "bin": {
+    "mani-calc": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "install-service": "node scripts/install-service.js",
+    "uninstall-service": "node scripts/uninstall-service.js",
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "calculator",
+    "windows",
+    "search",
+    "math",
+    "productivity",
+    "spotlight",
+    "instant-calculation",
+    "unit-conversion"
+  ],
+  "author": "Mani Reddy",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "os": [
+    "win32"
+  ],
+  "dependencies": {
+    "mathjs": "^12.2.1",
+    "node-windows": "^1.0.0-beta.8",
+    "clipboardy": "^3.0.0",
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manireddy/mani-calc"
+  }
+}
