@@ -11,6 +11,14 @@ class ClipboardManager {
         }
 
         try {
+            // Check if running in Electron
+            if (process.versions.electron) {
+                const { clipboard } = require('electron');
+                clipboard.writeText(String(text));
+                return true;
+            }
+
+            // Fallback to clipboardy for CLI
             await clipboardy.write(String(text));
             return true;
         } catch (error) {
@@ -21,6 +29,12 @@ class ClipboardManager {
 
     async read() {
         try {
+            // Check if running in Electron
+            if (process.versions.electron) {
+                const { clipboard } = require('electron');
+                return clipboard.readText();
+            }
+
             return await clipboardy.read();
         } catch (error) {
             console.error('Failed to read from clipboard:', error);
