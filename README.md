@@ -49,6 +49,28 @@ calc: what is 25% of 200 → 50 ✨
 
 Results appear instantly. Auto-copied to clipboard. Pure productivity.
 
+### 🎨 **NEW: Overlay Mode**
+
+Now with a **beautiful floating search box** that appears anywhere with `Alt+Space`!
+
+```bash
+# Start overlay mode
+npm run overlay
+
+# Press Alt+Space anywhere
+# Type: 2 + 3 * 5 → Instant result!
+# Type: sleep → Computer goes to sleep!
+```
+
+**Features:**
+- ⚡ Global hotkey (`Alt+Space`)
+- 🎨 Glassmorphism design
+- 💻 System commands (sleep, lock, shutdown, etc.)
+- 🚀 Live preview
+- 📋 Auto-copy results
+
+**[Learn more about Overlay Mode →](OVERLAY_MODE.md)**
+
 ---
 
 ## 🚀 Quick Start
@@ -206,9 +228,40 @@ This command:
 
 ## 📖 Usage
 
-Mani-Calc offers **three ways** to use it:
+Mani-Calc offers **four ways** to use it:
 
-### 1️⃣ Windows Search (Recommended)
+### 1️⃣ Overlay Mode (NEW! ⭐)
+
+The most powerful way - a floating search box with global hotkey:
+
+```bash
+# Start overlay mode
+npm run overlay
+
+# Or after global install
+mani-calc-overlay
+```
+
+Then press **`Alt+Space`** anywhere in Windows to toggle the search box!
+
+**Features:**
+- Works from any application
+- Beautiful glassmorphism UI
+- Live preview as you type
+- System commands (sleep, lock, shutdown, etc.)
+- Auto-hide when you click outside
+
+**Examples:**
+```
+Alt+Space → "2 + 3 * 5" → Enter
+Alt+Space → "10 km to miles" → Enter
+Alt+Space → "sleep" → Enter (computer sleeps!)
+Alt+Space → "lock" → Enter (computer locks!)
+```
+
+**[Full Overlay Mode Documentation →](OVERLAY_MODE.md)**
+
+### 2️⃣ Windows Search
 
 After installation, open Windows Search (`Win + S`) and type:
 
@@ -225,7 +278,7 @@ calc: sqrt(144)
 calc: history
 ```
 
-### 2️⃣ Command Line
+### 3️⃣ Command Line
 
 Use directly from your terminal:
 
@@ -249,7 +302,7 @@ mani-calc --help
 mani-calc --version
 ```
 
-### 3️⃣ Interactive Mode (REPL)
+### 4️⃣ Interactive Mode (REPL)
 
 Start an interactive session:
 
@@ -455,6 +508,7 @@ Add the output path + `\node_modules\.bin` to your system PATH.
 
 ## 📚 Documentation
 
+- **[OVERLAY_MODE.md](OVERLAY_MODE.md)** - ⭐ NEW: Floating search box guide
 - **[QUICKSTART.md](QUICKSTART.md)** - Get started in 2 minutes
 - **[EXAMPLES.md](EXAMPLES.md)** - Comprehensive usage examples
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** - Technical architecture details

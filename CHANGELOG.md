@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-01-21
+
+### Added
+- 🎨 **Overlay Mode** - Beautiful floating search box with global hotkey
+  - Press `Alt+Space` anywhere to toggle
+  - Glassmorphism UI design
+  - Live preview as you type
+  - Auto-hide on blur
+  - Smooth animations
+- 💻 **System Commands** - Control your computer with simple commands
+  - `sleep` - Put computer to sleep
+  - `shutdown` - Shutdown computer
+  - `restart` - Restart computer
+  - `lock` - Lock computer
+  - `logout` - Log out current user
+  - `empty recycle bin` - Empty recycle bin
+  - `volume up/down` - Control volume
+  - `mute/unmute` - Mute/unmute volume
+- 📖 **OVERLAY_MODE.md** - Comprehensive overlay mode documentation
+- ⚡ **Electron Integration** - For floating search box UI
+- 🎯 **mani-calc-overlay** command - Quick start overlay mode
+
+### Changed
+- Updated README with overlay mode section
+- Enhanced documentation structure
+- Improved usage examples
+
 ## [1.0.0] - 2026-01-21
 
 ### Added
