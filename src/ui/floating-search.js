@@ -96,6 +96,13 @@ class FloatingSearchBox {
         ipcMain.on('hide-window', () => {
             this.hide();
         });
+
+        // Handle resize request
+        ipcMain.on('resize-window', (event, height) => {
+            if (this.window) {
+                this.window.setSize(600, height);
+            }
+        });
     }
 
     async handleSystemCommand(query) {

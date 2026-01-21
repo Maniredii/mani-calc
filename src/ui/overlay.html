@@ -204,6 +204,7 @@
       input.value = '';
       resultContainer.classList.remove('show');
       shortcuts.classList.remove('show');
+      ipcRenderer.send('resize-window', 80);
     });
 
     // Handle input
@@ -273,6 +274,12 @@
       resultText.className = `result-text ${type}`;
       resultHint.textContent = hint;
       resultContainer.classList.add('show');
+
+      // Calculate new height
+      setTimeout(() => {
+        const height = document.body.offsetHeight;
+        ipcRenderer.send('resize-window', height);
+      }, 10);
     }
 
     // Auto-focus on load
