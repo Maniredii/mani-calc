@@ -47,6 +47,9 @@ Control your computer with simple commands:
 
 | Command | Action |
 |---------|--------|
+| `help` | Show available commands |
+| `theme` | Toggle Light/Dark mode |
+| `quit` | Quit application |
 | `sleep` | Put computer to sleep |
 | `shutdown` | Shutdown computer |
 | `restart` | Restart computer |

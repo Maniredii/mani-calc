@@ -100,6 +100,33 @@ class FloatingSearchBox {
         const execAsync = promisify(exec);
 
         const commands = {
+            'help': {
+                action: async () => {
+                    return 'Commands: sleep, lock, shutdown, restart, logout, mute, volume up/down, theme, quit';
+                },
+                description: 'Show available commands'
+            },
+            'quit': {
+                action: async () => {
+                    setTimeout(() => app.quit(), 500);
+                    return 'Quitting Mani-Calc...';
+                },
+                description: 'Quit application'
+            },
+            'exit': {
+                action: async () => {
+                    setTimeout(() => app.quit(), 500);
+                    return 'Quitting Mani-Calc...';
+                },
+                description: 'Quit application'
+            },
+            'theme': {
+                action: async () => {
+                    this.window.webContents.send('toggle-theme');
+                    return 'Toggled theme';
+                },
+                description: 'Toggle Light/Dark mode'
+            },
             'sleep': {
                 action: async () => {
                     await execAsync('rundll32.exe powrprof.dll,SetSuspendState 0,1,0');
