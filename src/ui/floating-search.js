@@ -74,7 +74,13 @@ class FloatingSearchBox {
                 if (systemResult) {
                     console.log('System command executed:', systemResult);
                     event.reply('query-result', systemResult);
-                    setTimeout(() => this.hide(), 1000);
+                    // Don't auto-hide for info commands like 'help' - let user read the content
+                    // Only auto-hide for action commands that perform an action (sleep, lock, etc.)
+                    const actionCommands = ['sleep', 'shutdown', 'restart', 'lock', 'logout', 'quit', 'exit'];
+                    const cmd = query.toLowerCase().trim();
+                    if (actionCommands.includes(cmd)) {
+                        setTimeout(() => this.hide(), 1500);
+                    }
                     return;
                 }
 
@@ -114,7 +120,14 @@ class FloatingSearchBox {
         const commands = {
             'help': {
                 action: async () => {
-                    return 'Commands: sleep, lock, shutdown, restart, logout, mute, volume up/down, theme, quit';
+                    return `📊 MATH: 2+3, sqrt(16), 15% of 200
+💱 CURRENCY: 100 USD to INR, 50 euros to dollars
+📅 DATE/TIME: time in tokyo, today + 30 days, days until christmas
+💻 PROGRAMMER: 255 to hex, 0xFF to decimal, 255 AND 128
+📏 UNITS: 10 km to miles, 100 kg to pounds
+⚙️ SYSTEM: sleep, lock, mute, volume up/down, screenshot
+🎨 THEMES: theme dark, theme neon, themes
+⚡ SETTINGS: autostart on/off, settings`;
                 },
                 description: 'Show available commands'
             },
@@ -183,31 +196,196 @@ class FloatingSearchBox {
             },
             'volume up': {
                 action: async () => {
-                    await execAsync('nircmd.exe changesysvolume 2000');
+                    // Use PowerShell to simulate volume up key press
+                    await execAsync('powershell -Command "(New-Object -ComObject WScript.Shell).SendKeys([char]175)"');
                     return 'Volume increased';
                 },
                 description: 'Increase volume'
             },
             'volume down': {
                 action: async () => {
-                    await execAsync('nircmd.exe changesysvolume -2000');
+                    // Use PowerShell to simulate volume down key press
+                    await execAsync('powershell -Command "(New-Object -ComObject WScript.Shell).SendKeys([char]174)"');
                     return 'Volume decreased';
                 },
                 description: 'Decrease volume'
             },
             'mute': {
                 action: async () => {
-                    await execAsync('nircmd.exe mutesysvolume 1');
-                    return 'Volume muted';
+                    // Use PowerShell to simulate mute key press
+                    await execAsync('powershell -Command "(New-Object -ComObject WScript.Shell).SendKeys([char]173)"');
+                    return 'Volume muted/unmuted';
                 },
-                description: 'Mute volume'
+                description: 'Toggle mute'
             },
             'unmute': {
                 action: async () => {
-                    await execAsync('nircmd.exe mutesysvolume 0');
-                    return 'Volume unmuted';
+                    // Same as mute - it's a toggle
+                    await execAsync('powershell -Command "(New-Object -ComObject WScript.Shell).SendKeys([char]173)"');
+                    return 'Volume muted/unmuted';
                 },
-                description: 'Unmute volume'
+                description: 'Toggle mute'
+            },
+            // Screenshot
+            'screenshot': {
+                action: async () => {
+                    await execAsync('snippingtool');
+                    return 'Opening Snipping Tool...';
+                },
+                description: 'Take a screenshot'
+            },
+            'snip': {
+                action: async () => {
+                    await execAsync('snippingtool');
+                    return 'Opening Snipping Tool...';
+                },
+                description: 'Take a screenshot'
+            },
+            // Brightness controls
+            'brightness up': {
+                action: async () => {
+                    await execAsync('powershell -Command "(Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1, [Math]::Min(100, (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightness).CurrentBrightness + 10))"');
+                    return 'Brightness increased';
+                },
+                description: 'Increase screen brightness'
+            },
+            'brightness down': {
+                action: async () => {
+                    await execAsync('powershell -Command "(Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1, [Math]::Max(0, (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightness).CurrentBrightness - 10))"');
+                    return 'Brightness decreased';
+                },
+                description: 'Decrease screen brightness'
+            },
+            // WiFi toggle
+            'wifi on': {
+                action: async () => {
+                    await execAsync('netsh interface set interface "Wi-Fi" enable');
+                    return 'WiFi enabled';
+                },
+                description: 'Enable WiFi'
+            },
+            'wifi off': {
+                action: async () => {
+                    await execAsync('netsh interface set interface "Wi-Fi" disable');
+                    return 'WiFi disabled';
+                },
+                description: 'Disable WiFi'
+            },
+            // Bluetooth toggle
+            'bluetooth on': {
+                action: async () => {
+                    await execAsync('powershell -Command "Start-Service bthserv"');
+                    return 'Bluetooth service started';
+                },
+                description: 'Enable Bluetooth'
+            },
+            'bluetooth off': {
+                action: async () => {
+                    await execAsync('powershell -Command "Stop-Service bthserv"');
+                    return 'Bluetooth service stopped';
+                },
+                description: 'Disable Bluetooth'
+            },
+            // Quick app launchers
+            'notepad': {
+                action: async () => {
+                    await execAsync('notepad');
+                    return 'Opening Notepad...';
+                },
+                description: 'Open Notepad'
+            },
+            'calculator': {
+                action: async () => {
+                    await execAsync('calc');
+                    return 'Opening Calculator...';
+                },
+                description: 'Open Windows Calculator'
+            },
+            'calc app': {
+                action: async () => {
+                    await execAsync('calc');
+                    return 'Opening Calculator...';
+                },
+                description: 'Open Windows Calculator'
+            },
+            'explorer': {
+                action: async () => {
+                    await execAsync('explorer');
+                    return 'Opening File Explorer...';
+                },
+                description: 'Open File Explorer'
+            },
+            'files': {
+                action: async () => {
+                    await execAsync('explorer');
+                    return 'Opening File Explorer...';
+                },
+                description: 'Open File Explorer'
+            },
+            'task manager': {
+                action: async () => {
+                    await execAsync('taskmgr');
+                    return 'Opening Task Manager...';
+                },
+                description: 'Open Task Manager'
+            },
+            'taskmgr': {
+                action: async () => {
+                    await execAsync('taskmgr');
+                    return 'Opening Task Manager...';
+                },
+                description: 'Open Task Manager'
+            },
+            'control panel': {
+                action: async () => {
+                    await execAsync('control');
+                    return 'Opening Control Panel...';
+                },
+                description: 'Open Control Panel'
+            },
+            'settings app': {
+                action: async () => {
+                    await execAsync('start ms-settings:');
+                    return 'Opening Windows Settings...';
+                },
+                description: 'Open Windows Settings'
+            },
+            'cmd': {
+                action: async () => {
+                    await execAsync('start cmd');
+                    return 'Opening Command Prompt...';
+                },
+                description: 'Open Command Prompt'
+            },
+            'powershell': {
+                action: async () => {
+                    await execAsync('start powershell');
+                    return 'Opening PowerShell...';
+                },
+                description: 'Open PowerShell'
+            },
+            'browser': {
+                action: async () => {
+                    await execAsync('start chrome || start msedge || start firefox');
+                    return 'Opening Browser...';
+                },
+                description: 'Open default browser'
+            },
+            // System info
+            'ip': {
+                action: async () => {
+                    const { stdout } = await execAsync('powershell -Command "(Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.InterfaceAlias -notlike \'*Loopback*\'} | Select-Object -First 1).IPAddress"');
+                    return `Your IP: ${stdout.trim()}`;
+                },
+                description: 'Show IP address'
+            },
+            'battery': {
+                action: async () => {
+                    const { stdout } = await execAsync('powershell -Command "(Get-WmiObject Win32_Battery).EstimatedChargeRemaining"');
+                    const percent = stdout.trim();
+                    return `🔋 Battery: ${percent}%`;
+                },
+                description: 'Show battery level'
             }
         };
 
