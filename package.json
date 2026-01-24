@@ -1,6 +1,6 @@
 {
   "name": "mani-calc",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Spotlight-style instant calculator for Windows | Math, Currency, Date/Time, Programmer Mode, Password Generator, Color Converter, Text Utils, Emoji, Web Search, 8 Themes | Offline-first productivity tool",
   "main": "src/index.js",
   "bin": {
