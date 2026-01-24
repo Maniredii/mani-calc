@@ -34,7 +34,7 @@ function createStartupShortcut() {
 
     // Get node path
     const nodePath = process.execPath;
-    const npmPath = path.join(path.dirname(nodePath), 'npm.cmd');
+    const scriptToRun = path.join(projectRoot, 'bin', 'overlay.js');
 
     // Create a VBS script that runs the overlay silently (no console window)
     const vbsContent = `
@@ -43,7 +43,7 @@ function createStartupShortcut() {
 
 Set WshShell = CreateObject("WScript.Shell")
 WshShell.CurrentDirectory = "${projectRoot.replace(/\\/g, '\\\\')}"
-WshShell.Run """${npmPath.replace(/\\/g, '\\\\')}""" & " run overlay", 0, False
+WshShell.Run """${nodePath.replace(/\\/g, '\\\\')}""" & " """ & "${scriptToRun.replace(/\\/g, '\\\\')}" & """", 0, False
 Set WshShell = Nothing
 `.trim();
 

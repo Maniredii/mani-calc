@@ -23,6 +23,7 @@ async function main() {
     if (args.length > 0) {
         const query = args.join(' ');
 
+
         // Special commands
         if (query === 'install') {
             await installService();
@@ -31,6 +32,20 @@ async function main() {
 
         if (query === 'uninstall') {
             await uninstallService();
+            return;
+        }
+
+        if (query === 'install-autostart') {
+            const path = require('path');
+            const scriptPath = path.join(__dirname, '../scripts/install-autostart.js');
+            require(scriptPath);
+            return;
+        }
+
+        if (query === 'uninstall-autostart') {
+            const path = require('path');
+            const scriptPath = path.join(__dirname, '../scripts/uninstall-autostart.js');
+            require(scriptPath);
             return;
         }
 
