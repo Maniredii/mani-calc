@@ -122,12 +122,20 @@ class FloatingSearchBox {
                 action: async () => {
                     return `📊 MATH: 2+3, sqrt(16), 15% of 200
 💱 CURRENCY: 100 USD to INR, 50 euros to dollars
-📅 DATE/TIME: time in tokyo, today + 30 days, days until christmas
-💻 PROGRAMMER: 255 to hex, 0xFF to decimal, 255 AND 128
+📅 DATE/TIME: time in tokyo, today + 30 days
+💻 PROGRAMMER: 255 to hex, 0xFF to decimal
 📏 UNITS: 10 km to miles, 100 kg to pounds
-⚙️ SYSTEM: sleep, lock, mute, volume up/down, screenshot
+🔐 PASSWORD: password, password 16
+🎲 RANDOM: random, dice, coin, uuid
+🎨 COLOR: #FF5733 to rgb, rgb(255,0,0) to hex
+📝 TEXT: upper hello, lower HELLO, count text
+😀 EMOJI: emoji happy, emoji heart
+🔒 HASH: md5 hello, sha256 hello
+🔤 BASE64: base64 encode/decode text
+🔍 SEARCH: google AI, youtube music, wiki topic
+⚙️ SYSTEM: sleep, lock, mute, screenshot, battery
 🎨 THEMES: theme dark, theme neon, themes
-⚡ SETTINGS: autostart on/off, settings`;
+⚡ SETTINGS: autostart on/off, settings, history`;
                 },
                 description: 'Show available commands'
             },

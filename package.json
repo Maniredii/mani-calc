@@ -1,7 +1,7 @@
 {
   "name": "mani-calc",
-  "version": "1.2.3",
-  "description": "Spotlight-style instant calculator for Windows Search | Math, natural language & unit conversions | Offline-first productivity tool",
+  "version": "2.1.0",
+  "description": "Spotlight-style instant calculator for Windows | Math, Currency, Date/Time, Programmer Mode, Password Generator, Color Converter, Text Utils, Emoji, Web Search, 8 Themes | Offline-first productivity tool",
   "main": "src/index.js",
   "bin": {
     "mani-calc": "./bin/cli.js",
@@ -10,6 +10,9 @@
   "scripts": {
     "start": "node src/index.js",
     "overlay": "electron bin/overlay.js",
+    "stop": "taskkill /IM electron.exe /F",
+    "install-autostart": "node scripts/install-autostart.js",
+    "uninstall-autostart": "node scripts/uninstall-autostart.js",
     "install-service": "node scripts/install-service.js",
     "uninstall-service": "node scripts/uninstall-service.js",
     "test": "node test/test.js"
@@ -22,7 +25,15 @@
     "productivity",
     "spotlight",
     "instant-calculation",
-    "unit-conversion"
+    "unit-conversion",
+    "currency-converter",
+    "date-calculator",
+    "programmer-calculator",
+    "hex-converter",
+    "system-commands",
+    "themes",
+    "overlay",
+    "hotkey"
   ],
   "author": "Manideep Reddy Eevuri",
   "license": "MIT",

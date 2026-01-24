@@ -392,17 +392,37 @@
       }
     }
 
-    // Handle theme toggle
+    // Available themes
+    const themes = ['dark', 'light', 'midnight', 'forest', 'sunset', 'purple', 'neon', 'ocean'];
+    let currentThemeIndex = 0;
+
+    // Apply theme by name
+    function applyTheme(themeName) {
+      themes.forEach(t => document.body.classList.remove(t));
+      if (themeName && themes.includes(themeName)) {
+        document.body.classList.add(themeName);
+        currentThemeIndex = themes.indexOf(themeName);
+      }
+    }
+
+    // Handle theme toggle (cycle through themes)
     ipcRenderer.on('toggle-theme', () => {
-      document.body.classList.toggle('dark');
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      applyTheme(themes[currentThemeIndex]);
     });
 
     // Handle result from main process
     ipcRenderer.on('query-result', (event, result) => {
       if (result.error) {
         showResult(`✗ ${result.error}`, '', 'error');
+      } else if (result.type === 'theme') {
+        // Apply the theme and show success
+        applyTheme(result.themeId);
+        showResult(`✓ ${result.formatted}`, '', 'success');
       } else if (result.type === 'system_command') {
-        showResult(`✓ ${result.formatted}`, 'Copied to clipboard', 'system');
+        showResult(`✓ ${result.formatted}`, '', 'system');
+      } else if (result.type === 'info') {
+        showResult(`ℹ️ ${result.formatted}`, '', 'success');
       } else {
         showResult(`✓ ${result.formatted}`, 'Copied to clipboard', 'success');
       }

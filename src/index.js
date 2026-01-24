@@ -7,6 +7,7 @@ const CurrencyConverter = require('./core/currency-converter');
 const DateTimeCalculator = require('./core/date-time-calculator');
 const ProgrammerCalculator = require('./core/programmer-calc');
 const SettingsManager = require('./core/settings-manager');
+const UtilitiesModule = require('./core/utilities');
 const WindowsSearchIntegration = require('./integration/windows-search');
 const chalk = require('chalk');
 
@@ -21,6 +22,7 @@ class ManiCalc {
     this.dateTimeCalculator = new DateTimeCalculator();
     this.programmerCalculator = new ProgrammerCalculator();
     this.settingsManager = new SettingsManager();
+    this.utilities = new UtilitiesModule();
     this.windowsSearch = new WindowsSearchIntegration(this);
   }
 
@@ -137,6 +139,32 @@ class ManiCalc {
         };
         this.historyManager.addEntry(response);
         await this.clipboardManager.copy(programmerResult.result.toString());
+        return response;
+      }
+
+      // Try utilities (password, random, color, text, emoji, search)
+      const utilityResult = this.utilities.parse(query);
+      if (utilityResult) {
+        // Handle web search - open browser
+        if (utilityResult.type === 'search' && utilityResult.url) {
+          const { exec } = require('child_process');
+          exec(`start "" "${utilityResult.url}"`);
+          return {
+            query,
+            result: utilityResult.result,
+            type: 'search',
+            formatted: utilityResult.formatted
+          };
+        }
+
+        const response = {
+          query,
+          result: utilityResult.result,
+          type: utilityResult.type,
+          formatted: utilityResult.formatted
+        };
+        this.historyManager.addEntry(response);
+        await this.clipboardManager.copy(utilityResult.result.toString());
         return response;
       }
 

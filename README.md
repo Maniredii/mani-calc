@@ -1,614 +1,494 @@
-<div align="center">
+# ⚡ Mani-Calc v2.1.0
 
-# 📊 Mani-Calc
+> **Spotlight-style instant calculator for Windows** — Math, Currency, Date/Time, Programmer Mode, Password Generator, Color Converter, Text Utils, Emoji Search, Web Search, System Commands & 8 Beautiful Themes!
 
-**Spotlight for Windows** - Instant calculations from Windows Search
+![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Windows-0078D6.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-[![npm version](https://img.shields.io/npm/v/mani-calc.svg)](https://www.npmjs.com/package/mani-calc)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-Windows-0078D6.svg)](https://www.microsoft.com/windows)
-[![Node Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)](https://nodejs.org)
-
-<p>
-  <strong>Finally, Windows gets what macOS has had for years.</strong><br/>
-  Calculate expressions, convert units, and process natural language queries<br/>
-  directly from Windows Search - no app to open, no context switching.
-</p>
-
-[Quick Start](#-quick-start) • [Features](#-features) • [Examples](#-examples) • [Installation](#-installation) • [Usage](#-usage)
-
-</div>
-
----
-
-## 🎯 The Problem
-
-macOS users can type `2+3*5` in Spotlight and instantly get `17`. 
-
-Windows users? They have to open Calculator, type the expression, copy the result, and switch back to what they were doing.
-
-**Not anymore.**
-
----
-
-## ✨ The Solution
-
-**Mani-Calc** turns your Windows Search into a powerful calculator. Type math expressions, conversions, or natural language queries and get instant results — just like macOS Spotlight, but for Windows.
-
-```bash
-# Install once
-npm install -g mani-calc
-mani-calc install
-
-# Use forever
-# Type in Windows Search:
-calc: 2 + 3 * 5          → 17 ✨
-calc: 10 km to miles     → 6.21 miles ✨
-calc: what is 25% of 200 → 50 ✨
-```
-
-Results appear instantly. Auto-copied to clipboard. Pure productivity.
-
-### 🎨 **NEW: Overlay Mode**
-
-Now with a **beautiful floating search box** that appears anywhere with `Alt+Space`!
-
-```bash
-# Start overlay mode
-npm run overlay
-
-# Press Alt+Space anywhere
-# Type: 2 + 3 * 5 → Instant result!
-# Type: sleep → Computer goes to sleep!
-```
-
-**Features:**
-- ⚡ Global hotkey (`Alt+Space`)
-- 🎨 Glassmorphism design
-- 💻 System commands (sleep, lock, shutdown, etc.)
-- 🚀 Live preview
-- 📋 Auto-copy results
-
-**[Learn more about Overlay Mode →](OVERLAY_MODE.md)**
+Press `Alt+Space` anywhere on your desktop to instantly calculate, convert, and control your system!
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Install the Package
-```bash
-npm install -g mani-calc
-```
-
-### 2. Set Up Windows Search Integration
-```bash
-mani-calc install
-```
-> **Note:** You may need to run this as Administrator for full Windows Search integration.
-
-### 3. Start Using!
-
-Open Windows Search (`Win + S`) and type:
-```
-calc: 2 + 3 * 5
-```
-
-**That's it!** The result appears instantly and is automatically copied to your clipboard.
-
----
-
-## 🎨 Features
-
-### 🧮 Math Calculations
-Perform any mathematical operation with full operator precedence:
+### Installation
 
 ```bash
-calc: 2 + 3 * 5              # 17
-calc: (10 + 20) / 5          # 6
-calc: sqrt(144)              # 12
-calc: 2^10                   # 1024
-calc: sin(pi/2)              # 1
-calc: log(100)               # 2
-calc: abs(-42)               # 42
-```
-
-**Supported:**
-- Basic operators: `+`, `-`, `*`, `/`, `^` (power)
-- Functions: `sqrt()`, `sin()`, `cos()`, `tan()`, `log()`, `ln()`, `abs()`, `ceil()`, `floor()`, `round()`
-- Constants: `pi`, `e`
-- Parentheses for grouping
-
-### 💬 Natural Language Processing
-Ask questions in plain English:
-
-```bash
-calc: what is 25 percent of 200    # 50
-calc: 15% of 300                   # 45
-calc: half of 80                   # 40
-calc: quarter of 100               # 25
-calc: square root of 64            # 8
-calc: 10 squared                   # 100
-calc: 5 cubed                      # 125
-calc: 2 to the power of 8          # 256
-```
-
-### 🔄 Unit Conversions
-Convert between units instantly:
-
-#### Length
-```bash
-calc: 10 km to miles         # 6.21 miles
-calc: 5 miles to km          # 8.05 km
-calc: 100 cm to inches       # 39.37 inches
-calc: 6 feet to meters       # 1.83 meters
-```
-
-#### Weight
-```bash
-calc: 10 kg to pounds        # 22.05 pounds
-calc: 5 pounds to kg         # 2.27 kg
-calc: 1000 grams to kg       # 1 kg
-calc: 16 oz to pounds        # 1 pound
-```
-
-#### Temperature
-```bash
-calc: 0 celsius to fahrenheit        # 32 fahrenheit
-calc: 100 celsius to fahrenheit      # 212 fahrenheit
-calc: 98.6 fahrenheit to celsius     # 37 celsius
-calc: 273.15 kelvin to celsius       # 0 celsius
-```
-
-#### Time
-```bash
-calc: 2 hours to minutes     # 120 minutes
-calc: 120 seconds to minutes # 2 minutes
-calc: 1 day to hours         # 24 hours
-calc: 365 days to hours      # 8760 hours
-```
-
-#### Volume
-```bash
-calc: 5 liters to gallons    # 1.32 gallons
-calc: 1 gallon to liters     # 3.79 liters
-calc: 500 ml to liters       # 0.5 liters
-calc: 2 cups to ml           # 473.18 ml
-```
-
-#### Speed
-```bash
-calc: 100 km/h to mph        # 62.14 mph
-calc: 60 mph to km/h         # 96.56 km/h
-calc: 10 m/s to km/h         # 36 km/h
-```
-
-### 📋 Automatic Clipboard Integration
-Every result is automatically copied to your clipboard. Just press `Ctrl+V` to paste it anywhere!
-
-### 📚 Calculation History
-Keep track of your recent calculations:
-
-```bash
-calc: history                # View last 10 calculations
-calc: clear history          # Clear all history
-```
-
-History is stored locally with timestamps, so you can always review past calculations.
-
----
-
-## 📥 Installation
-
-### Prerequisites
-- **Node.js** >= 14.0.0 ([Download here](https://nodejs.org))
-- **Windows** 10 or 11
-- **npm** (comes with Node.js)
-
-### Install Globally
-```bash
-npm install -g mani-calc
-```
-
-### Set Up Windows Search Integration
-```bash
-mani-calc install
-```
-
-This command:
-- Registers the `calc:` protocol handler
-- Creates a Windows Search connector
-- Sets up registry entries for seamless integration
-
-> **Tip:** If Windows Search integration doesn't work immediately, try:
-> 1. Running `mani-calc install` as Administrator
-> 2. Restarting Windows Explorer: `taskkill /f /im explorer.exe && start explorer.exe`
-> 3. Logging out and back in
-
----
-
-## 📖 Usage
-
-Mani-Calc offers **four ways** to use it:
-
-### 1️⃣ Overlay Mode (NEW! ⭐)
-
-The most powerful way - a floating search box with global hotkey:
-
-```bash
-# Start overlay mode
-npm run overlay
-
-# Or after global install
-mani-calc-overlay
-```
-
-Then press **`Alt+Space`** anywhere in Windows to toggle the search box!
-
-**Features:**
-- Works from any application
-- Beautiful glassmorphism UI
-- Live preview as you type
-- System commands (sleep, lock, shutdown, etc.)
-- Auto-hide when you click outside
-
-**Examples:**
-```
-Alt+Space → "2 + 3 * 5" → Enter
-Alt+Space → "10 km to miles" → Enter
-Alt+Space → "sleep" → Enter (computer sleeps!)
-Alt+Space → "lock" → Enter (computer locks!)
-```
-
-**[Full Overlay Mode Documentation →](OVERLAY_MODE.md)**
-
-### 2️⃣ Windows Search
-
-After installation, open Windows Search (`Win + S`) and type:
-
-```
-calc: [your expression]
-```
-
-**Examples:**
-```
-calc: 2 + 3 * 5
-calc: 10 km to miles
-calc: what is 25 percent of 200
-calc: sqrt(144)
-calc: history
-```
-
-### 3️⃣ Command Line
-
-Use directly from your terminal:
-
-```bash
-# Basic calculation
-mani-calc "2 + 3 * 5"
-
-# Natural language
-mani-calc "what is 25 percent of 200"
-
-# Unit conversion
-mani-calc "10 km to miles"
-
-# View history
-mani-calc history
-
-# Get help
-mani-calc --help
-
-# Check version
-mani-calc --version
-```
-
-### 4️⃣ Interactive Mode (REPL)
-
-Start an interactive session:
-
-```bash
-mani-calc
-```
-
-Then type your calculations:
-
-```
-calc> 2 + 3 * 5
-✓ 2 + 3 * 5 = 17
-  (Result copied to clipboard)
-
-calc> 10 km to miles
-✓ 10 km = 6.21 miles
-  (Result copied to clipboard)
-
-calc> what is 25 percent of 200
-✓ what is 25 percent of 200 = 50
-  (Result copied to clipboard)
-
-calc> history
-Recent Calculations:
-
-1. what is 25 percent of 200 = 50 (7:45 PM)
-2. 10 km = 6.21 miles (7:44 PM)
-3. 2 + 3 * 5 = 17 (7:43 PM)
-
-calc> exit
-👋 Goodbye!
-```
-
-**Interactive Mode Commands:**
-- `exit` or `quit` - Exit interactive mode
-- `clear` - Clear the screen
-- `help` - Show help
-- `history` - View calculation history
-- Any calculation - Get instant result
-
----
-
-## 💡 Real-World Use Cases
-
-### 🛒 Shopping
-```bash
-# Calculate discount
-calc: what is 20 percent of 150    # 30 (discount amount)
-calc: 150 - 30                     # 120 (final price)
-
-# Tax calculation
-calc: what is 8.5 percent of 100   # 8.5 (tax amount)
-```
-
-### 👨‍🍳 Cooking
-```bash
-calc: 2 cups to ml                 # 473.18 ml
-calc: 350 fahrenheit to celsius    # 176.67 celsius
-calc: half of 250                  # 125 (halving a recipe)
-```
-
-### ✈️ Travel
-```bash
-calc: 500 km to miles              # 310.69 miles
-calc: 120 km/h to mph              # 74.56 mph
-calc: 10 kg to pounds              # 22.05 pounds (luggage weight)
-```
-
-### 🏃 Fitness
-```bash
-calc: 5 miles to km                # 8.05 km (running distance)
-calc: 150 pounds to kg             # 68.04 kg (body weight)
-```
-
-### 🔬 Science & Engineering
-```bash
-calc: 9.8 * 5                      # 49 (acceleration * time)
-calc: sqrt(2) * 10                 # 14.14 (diagonal calculation)
-calc: pi * 5^2                     # 78.54 (circle area)
-```
-
-### 💼 Finance
-```bash
-calc: what is 15 percent of 50000  # 7500 (interest calculation)
-calc: 50000 + 7500                 # 57500 (total with interest)
-```
-
----
-
-## 🎯 Advanced Features
-
-### Variables & Memory (Interactive Mode)
-Store values for reuse during your session:
-
-```bash
-calc> x = 100
-✓ x = 100
-
-calc> x * 2
-✓ 200
-
-calc> x / 4
-✓ 25
-
-calc> y = x + 50
-✓ y = 150
-
-calc> y * 2
-✓ 300
-```
-
-### Complex Expressions
-Chain multiple operations:
-
-```bash
-calc: ((10 + 5) * 3 - 20) / 5      # 5
-calc: sqrt(16) + sqrt(9)           # 7
-calc: 2^3 + 3^2                    # 17
-calc: sin(pi/4) + cos(pi/4)        # 1.41
-```
-
-### Flexible Syntax
-Units are case-insensitive and flexible:
-
-```bash
-calc: 10 KM to MILES               # Works!
-calc: 10 Km to Miles               # Works!
-calc: 10 kilometers to miles       # Works!
-calc: 10 kilometer to mile         # Works!
-```
-
----
-
-## 🔧 Commands Reference
-
-| Command | Description |
-|---------|-------------|
-| `mani-calc install` | Install Windows Search integration |
-| `mani-calc uninstall` | Remove Windows Search integration |
-| `mani-calc "[expression]"` | Calculate expression directly |
-| `mani-calc` | Start interactive REPL mode |
-| `mani-calc history` | View calculation history |
-| `mani-calc --help` | Show help information |
-| `mani-calc --version` | Show version number |
-
----
-
-## 🔐 Privacy & Performance
-
-### Privacy First
-- ✅ **100% Offline** - No internet connection required
-- ✅ **No Tracking** - Zero data collection or analytics
-- ✅ **No Telemetry** - Your calculations stay on your machine
-- ✅ **Local Storage** - History stored locally in your AppData folder
-
-### Lightning Fast
-- ⚡ **< 100ms Response Time** - Instant results
-- 🪶 **Lightweight** - Minimal memory footprint
-- 🚀 **No Lag** - Smooth, responsive experience
-- 💾 **Efficient** - Optimized for performance
-
----
-
-## 🛠️ Troubleshooting
-
-### Windows Search Integration Not Working?
-
-**Solution 1: Run as Administrator**
-```bash
-# Right-click Command Prompt/PowerShell → "Run as Administrator"
-mani-calc install
-```
-
-**Solution 2: Restart Windows Explorer**
-```bash
-taskkill /f /im explorer.exe && start explorer.exe
-```
-
-**Solution 3: Log Out and Back In**
-Sometimes Windows needs a fresh session to recognize the protocol handler.
-
-### Results Not Copying to Clipboard?
-
-Make sure no other application is blocking clipboard access. Close any clipboard managers temporarily.
-
-### Command Not Found?
-
-Make sure npm's global bin directory is in your PATH:
-```bash
-npm config get prefix
-```
-
-Add the output path + `\node_modules\.bin` to your system PATH.
-
-### Need More Help?
-
-- 📖 Check [EXAMPLES.md](EXAMPLES.md) for more usage examples
-- 🏗️ Read [ARCHITECTURE.md](ARCHITECTURE.md) for technical details
-- 🐛 [Report an issue](https://github.com/Maniredii/mani-calc/issues) on GitHub
-- 💬 Start a [discussion](https://github.com/Maniredii/mani-calc/discussions)
-
----
-
-## 📚 Documentation
-
-- **[OVERLAY_MODE.md](OVERLAY_MODE.md)** - ⭐ NEW: Floating search box guide
-- **[QUICKSTART.md](QUICKSTART.md)** - Get started in 2 minutes
-- **[EXAMPLES.md](EXAMPLES.md)** - Comprehensive usage examples
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Technical architecture details
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - How to contribute
-- **[CHANGELOG.md](CHANGELOG.md)** - Version history
-
----
-
-## 🗺️ Roadmap
-
-### Phase 2 - Productivity Features (v1.1.0)
-- [ ] Live preview while typing in Windows Search
-- [ ] Persistent variables across sessions
-- [ ] Date & time calculations (`today + 15 days`, `days between dates`)
-- [ ] Enhanced error messages with suggestions
-
-### Phase 3 - Advanced Features (v1.2.0)
-- [ ] Graph plotting (`plot y = x^2`)
-- [ ] Step-by-step solutions for equations
-- [ ] Developer mode (hex, binary, base64 conversions)
-- [ ] Scientific notation support
-
-### Phase 4 - Ecosystem (v2.0.0)
-- [ ] Plugin system for extensions
-- [ ] Custom user-defined commands
-- [ ] Voice input support
-- [ ] PowerToys Run integration
-- [ ] Sync history across devices (optional)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Whether it's:
-
-- 🐛 Bug reports
-- 💡 Feature requests
-- 📖 Documentation improvements
-- 🔧 Code contributions
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Development Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/Maniredii/mani-calc.git
+# Clone or download the repository
 cd mani-calc
 
 # Install dependencies
 npm install
 
+# Run the overlay
+npm run overlay
+```
+
+### Usage
+
+1. Press **`Alt+Space`** to open the floating calculator
+2. Type your query and see **live results** as you type
+3. Press **Enter** to copy the result to clipboard
+4. Press **Escape** to close
+
+---
+
+## 📖 Complete Feature Guide
+
+### 📊 Math Calculations
+
+Perform any mathematical calculation with live preview!
+
+| Example | Result |
+|---------|--------|
+| `2 + 3 * 5` | 17 |
+| `sqrt(144)` | 12 |
+| `sin(45 deg)` | 0.7071 |
+| `log(100)` | 2 |
+| `2^10` | 1024 |
+| `15% of 200` | 30 |
+| `(100 + 50) / 3` | 50 |
+
+**Supported Functions:**
+- Basic: `+`, `-`, `*`, `/`, `^` (power)
+- Trigonometry: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`
+- Logarithms: `log`, `log10`, `ln`
+- Roots: `sqrt`, `cbrt`, `nthRoot`
+- Constants: `pi`, `e`
+- Rounding: `round`, `floor`, `ceil`, `abs`
+
+---
+
+### 💱 Currency Converter
+
+Convert between 40+ world currencies with live or cached exchange rates!
+
+| Example | Result |
+|---------|--------|
+| `100 USD to INR` | $100 USD = ₹8,312.00 INR |
+| `50 euros to dollars` | €50 EUR = $54.35 USD |
+| `1000 yen to usd` | ¥1000 JPY = $6.73 USD |
+| `500 rupees to gbp` | ₹500 INR = £4.76 GBP |
+
+**Supported Currencies:**
+- **Americas:** USD, CAD, MXN, BRL, ARS, CLP, COP, PEN
+- **Europe:** EUR, GBP, CHF, SEK, NOK, DKK, PLN, CZK, HUF, RON, TRY
+- **Asia:** INR, JPY, CNY, KRW, SGD, HKD, TWD, THB, MYR, PHP, IDR, VND, PKR, BDT
+- **Middle East:** AED, SAR, ILS
+- **Oceania:** AUD, NZD
+- **Africa:** ZAR, NGN, EGP
+
+---
+
+### 📅 Date & Time Calculator
+
+Calculate dates, countdowns, and check world time!
+
+#### World Clock
+| Example | Result |
+|---------|--------|
+| `time in tokyo` | Tokyo: 8:57 PM (Wed, Jan 22) |
+| `time in london` | London: 10:57 AM (Wed, Jan 22) |
+| `time in new york` | New York: 5:57 AM (Wed, Jan 22) |
+
+**50+ Locations Supported:** Tokyo, London, New York, Paris, Sydney, Dubai, Singapore, Mumbai, Berlin, Moscow, and more!
+
+#### Date Arithmetic
+| Example | Result |
+|---------|--------|
+| `today + 30 days` | Friday, February 21, 2026 |
+| `today - 2 weeks` | Wednesday, January 8, 2026 |
+| `today + 6 months` | Wednesday, July 22, 2026 |
+| `today + 1 year` | Friday, January 22, 2027 |
+
+#### Countdowns
+| Example | Result |
+|---------|--------|
+| `days until christmas` | 337 days from now |
+| `days until new year` | 344 days from now |
+| `days since jan 1` | 21 days ago |
+
+#### Quick Queries
+| Example | Result |
+|---------|--------|
+| `today` | Wednesday, January 22, 2026, 4:27 PM |
+| `time` | 4:27:07 PM |
+| `week` | Week 4 of 2026 |
+| `what day is dec 25` | Thursday, December 25, 2025 |
+
+---
+
+### 💻 Programmer Calculator
+
+Hex, Binary, Octal conversions and bitwise operations for developers!
+
+#### Number Conversions
+| Example | Result |
+|---------|--------|
+| `255 to hex` | 255 = 0xFF (hex) |
+| `255 to binary` | 255 = 1111 1111 (binary) |
+| `255 to octal` | 255 = 0o377 (octal) |
+| `0xFF to decimal` | 0xFF = 255 (decimal) |
+| `0b11111111 to decimal` | 0b11111111 = 255 (decimal) |
+| `hex 255` | 0xFF |
+| `bin 255` | 0b11111111 |
+
+#### Bitwise Operations
+| Example | Result |
+|---------|--------|
+| `255 AND 128` | 255 AND 128 = 128 |
+| `255 OR 64` | 255 OR 64 = 255 |
+| `255 XOR 128` | 255 XOR 128 = 127 |
+| `NOT 255` | NOT 255 = 4294967040 (32-bit) |
+| `16 << 2` | 16 << 2 = 64 |
+| `64 >> 2` | 64 >> 2 = 16 |
+
+---
+
+### 📏 Unit Conversions
+
+Convert between various units instantly!
+
+#### Length
+| Example | Result |
+|---------|--------|
+| `10 km to miles` | 6.2137 miles |
+| `100 meters to feet` | 328.084 feet |
+| `5 inches to cm` | 12.7 cm |
+
+#### Weight
+| Example | Result |
+|---------|--------|
+| `100 kg to pounds` | 220.462 pounds |
+| `150 lbs to kg` | 68.039 kg |
+| `1 ton to kg` | 1000 kg |
+
+#### Temperature
+| Example | Result |
+|---------|--------|
+| `100 F to C` | 37.78 °C |
+| `0 C to F` | 32 °F |
+| `300 K to C` | 26.85 °C |
+
+#### Volume
+| Example | Result |
+|---------|--------|
+| `1 gallon to liters` | 3.785 liters |
+| `500 ml to cups` | 2.11 cups |
+
+#### Data
+| Example | Result |
+|---------|--------|
+| `1 GB to MB` | 1024 MB |
+| `1 TB to GB` | 1024 GB |
+
+---
+
+### 🔐 Password Generator
+
+Generate secure random passwords instantly!
+
+| Example | Result |
+|---------|--------|
+| `password` | 🔐 Password: xK9#mP2$nL7@qR |
+| `password 16` | 16-character secure password |
+| `password 20` | 20-character secure password |
+
+---
+
+### 🎲 Random Generator
+
+Random numbers, dice rolls, coin flips, and UUIDs!
+
+| Example | Result |
+|---------|--------|
+| `random` | 🎲 Random (1-100): 42 |
+| `random 1 1000` | 🎲 Random (1-1000): 567 |
+| `dice` | 🎲 Dice (d6): 4 |
+| `d20` | 🎲 Dice (d20): 17 |
+| `coin` | 🪙 Coin Flip: Heads |
+| `flip` | 🪙 Coin Flip: Tails |
+| `uuid` | 🔑 UUID: a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d |
+
+---
+
+### 🎨 Color Converter
+
+Convert between HEX, RGB, and HSL color formats!
+
+| Example | Result |
+|---------|--------|
+| `#FF5733` | 🎨 Color: #FF5733 \| rgb(255, 87, 51) \| hsl(11, 100%, 60%) |
+| `#FF5733 to rgb` | 🎨 Color: rgb(255, 87, 51) |
+| `rgb(255,0,0) to hex` | 🎨 Color: #FF0000 |
+
+---
+
+### 📝 Text Utilities
+
+Transform and analyze text!
+
+| Example | Result |
+|---------|--------|
+| `upper hello world` | 📝 upper: HELLO WORLD |
+| `lower HELLO WORLD` | 📝 lower: hello world |
+| `reverse hello` | 📝 reverse: olleh |
+| `capitalize hello world` | 📝 capitalize: Hello World |
+| `count hello world` | 📊 Count: 11 chars, 2 words |
+| `camelcase hello world` | 📝 camelcase: helloWorld |
+| `snakecase hello world` | 📝 snakecase: hello_world |
+| `kebabcase hello world` | 📝 kebabcase: hello-world |
+
+---
+
+### 😀 Emoji Search
+
+Find emojis by category!
+
+| Example | Result |
+|---------|--------|
+| `emoji happy` | 😀 Emojis: 😀 😃 😄 😁 😆 😊 🙂 😇 🥰 😍 |
+| `emoji heart` | 😀 Emojis: ❤️ 🧡 💛 💚 💙 💜 🖤 🤍 🤎 💔 |
+| `emoji fire` | 😀 Emojis: 🔥 💥 ⚡ ✨ 💫 🌟 ⭐ |
+| `emoji food` | 😀 Emojis: 🍕 🍔 🍟 🌭 🍿 🥗 🍣 🍜 🍩 🍪 |
+| `emoji music` | 😀 Emojis: 🎵 🎶 🎼 🎹 🎸 🎺 🥁 🎷 🎻 |
+| `emoji animal` | 😀 Emojis: 🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 🐨 🦁 |
+
+**Categories:** happy, sad, love, heart, angry, laugh, cool, fire, music, food, drink, animal, nature, weather, sport, travel, work, money, celebrate, thumbs, hand, face, star, check, cross, time, arrow
+
+---
+
+### 🔒 Hash & Encoding
+
+Generate hashes and encode/decode Base64!
+
+| Example | Result |
+|---------|--------|
+| `md5 hello` | 🔒 MD5: 5d41402abc4b2a76b9719d911017c592 |
+| `sha256 hello` | 🔒 SHA256: 2cf24dba5fb0a30e... |
+| `sha1 hello` | 🔒 SHA1: aaf4c61ddcc5e8a... |
+| `base64 encode hello` | 🔤 Base64 encode: aGVsbG8= |
+| `base64 decode aGVsbG8=` | 🔤 Base64 decode: hello |
+
+---
+
+### 🔍 Quick Web Search
+
+Search the web directly from the calculator!
+
+| Example | Action |
+|---------|--------|
+| `google AI news` | Opens Google search for "AI news" |
+| `youtube music videos` | Opens YouTube search for "music videos" |
+| `wiki Albert Einstein` | Opens Wikipedia search |
+| `github react` | Opens GitHub search for "react" |
+| `stackoverflow javascript` | Opens StackOverflow search |
+| `amazon laptop` | Opens Amazon search for "laptop" |
+| `maps New York` | Opens Google Maps search |
+| `reddit programming` | Opens Reddit search |
+| `twitter elon musk` | Opens Twitter search |
+
+**Supported Search Engines:** google, youtube, bing, duckduckgo, wiki, wikipedia, github, stackoverflow, amazon, twitter, reddit, maps
+
+---
+
+### ⚙️ System Commands
+
+Control your Windows PC directly from the calculator!
+
+#### Power Controls
+| Command | Action |
+|---------|--------|
+| `sleep` | Put computer to sleep |
+| `lock` | Lock the computer |
+| `shutdown` | Shutdown the computer |
+| `restart` | Restart the computer |
+| `logout` | Log out current user |
+
+#### Volume Controls
+| Command | Action |
+|---------|--------|
+| `mute` | Toggle mute |
+| `unmute` | Toggle mute |
+| `volume up` | Increase volume |
+| `volume down` | Decrease volume |
+
+#### Screen & Connectivity
+| Command | Action |
+|---------|--------|
+| `brightness up` | Increase screen brightness |
+| `brightness down` | Decrease screen brightness |
+| `wifi on` | Enable WiFi |
+| `wifi off` | Disable WiFi |
+| `bluetooth on` | Enable Bluetooth |
+| `bluetooth off` | Disable Bluetooth |
+
+#### Quick Launch Apps
+| Command | Action |
+|---------|--------|
+| `notepad` | Open Notepad |
+| `calculator` | Open Windows Calculator |
+| `explorer` / `files` | Open File Explorer |
+| `task manager` | Open Task Manager |
+| `control panel` | Open Control Panel |
+| `settings app` | Open Windows Settings |
+| `cmd` | Open Command Prompt |
+| `powershell` | Open PowerShell |
+| `browser` | Open default browser |
+| `screenshot` / `snip` | Open Snipping Tool |
+
+#### System Info
+| Command | Action |
+|---------|--------|
+| `ip` | Show your IP address |
+| `battery` | Show battery percentage |
+
+---
+
+### 🎨 Themes
+
+Customize your calculator with 8 beautiful themes!
+
+| Command | Theme |
+|---------|-------|
+| `theme dark` | Dark Mode (default) |
+| `theme light` | Light Mode |
+| `theme midnight` | Midnight Blue |
+| `theme forest` | Forest Green |
+| `theme sunset` | Sunset Orange |
+| `theme purple` | Royal Purple |
+| `theme neon` | Neon Glow |
+| `theme ocean` | Deep Ocean |
+| `themes` | List all available themes |
+
+---
+
+### ⚡ Settings & Configuration
+
+| Command | Action |
+|---------|--------|
+| `settings` | View current settings |
+| `autostart on` | Start with Windows |
+| `autostart off` | Disable auto-start |
+| `help` | Show all commands |
+| `history` | View calculation history |
+| `clear history` | Clear calculation history |
+| `quit` / `exit` | Close Mani-Calc |
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Alt + Space` | Toggle calculator overlay |
+| `Enter` | Execute & copy result to clipboard |
+| `Escape` | Close overlay |
+
+---
+
+## 🛠️ Development
+
+### Project Structure
+```
+mani-calc/
+├── src/
+│   ├── core/
+│   │   ├── math-engine.js       # Math calculations
+│   │   ├── currency-converter.js # Currency conversion
+│   │   ├── date-time-calculator.js # Date/time calculations
+│   │   ├── programmer-calc.js   # Hex/Binary/Bitwise
+│   │   ├── unit-converter.js    # Unit conversions
+│   │   ├── nlp-parser.js        # Natural language parsing
+│   │   ├── history-manager.js   # Calculation history
+│   │   ├── clipboard-manager.js # Clipboard operations
+│   │   └── settings-manager.js  # User settings
+│   ├── ui/
+│   │   ├── main-electron.js     # Electron main process
+│   │   ├── floating-search.js   # Overlay window logic
+│   │   └── overlay.html         # UI template
+│   ├── integration/
+│   │   └── windows-search.js    # Windows Search integration
+│   └── index.js                 # Main entry point
+├── bin/
+│   ├── cli.js                   # CLI interface
+│   └── overlay.js               # Overlay launcher
+├── test/
+│   └── test.js                  # Test suite
+└── package.json
+```
+
+### Run in Development
+```bash
+# Run overlay mode
+npm run overlay
+
+# Run CLI mode
+npm start
+
 # Run tests
 npm test
-
-# Test locally
-node bin/cli.js "2 + 3 * 5"
 ```
+
+---
+
+## 📋 Requirements
+
+- **OS:** Windows 10/11
+- **Node.js:** v14.0.0 or higher
+- **Electron:** Included in dependencies
+
+---
+
+## 📝 Changelog
+
+### v2.1.0 (January 2026)
+- ✨ **Password Generator** - Generate secure random passwords (8-64 chars)
+- ✨ **Random Generator** - Random numbers, dice rolls, coin flips, UUIDs
+- ✨ **Color Converter** - Convert HEX, RGB, HSL formats
+- ✨ **Text Utilities** - upper, lower, reverse, capitalize, camelcase, snakecase, kebabcase, count
+- ✨ **Emoji Search** - Find emojis by category (30+ categories)
+- ✨ **Hash Generator** - MD5, SHA1, SHA256, SHA512 hashes
+- ✨ **Base64 Encoding** - Encode/decode Base64 strings
+- ✨ **Quick Web Search** - Google, YouTube, Wikipedia, GitHub, StackOverflow, Amazon, Reddit, Maps
+- 📚 Complete README documentation with all features
+
+### v2.0.0 (January 2026)
+- ✨ **Currency Converter** - 40+ world currencies
+- ✨ **Date/Time Calculator** - World clock, date arithmetic, countdowns
+- ✨ **Programmer Mode** - Hex, Binary, Octal, Bitwise operations
+- ✨ **8 Color Themes** - Dark, Light, Midnight, Forest, Sunset, Purple, Neon, Ocean
+- ✨ **25+ System Commands** - Control Windows from the overlay
+- ✨ **Auto-Start** - Start with Windows option
+- ✨ **Live Calculation** - See results as you type
+- 🔧 Fixed volume controls (replaced nircmd with native PowerShell)
+- 🔧 Fixed help command visibility
+- 🔧 Improved settings persistence
+
+### v1.2.3 (Previous)
+- Basic math calculations
+- Unit conversions
+- Windows Search integration
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
 ## 📄 License
 
-MIT © [Mani Reddy](https://github.com/Maniredii)
-
-See [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-## 💖 Acknowledgments
+## 👨‍💻 Author
 
-Inspired by macOS Spotlight's calculator feature. Built to bring the same productivity boost to Windows users worldwide.
-
----
-
-## 🌟 Show Your Support
-
-If Mani-Calc saves you time and improves your productivity:
-
-- ⭐ **Star this repository** on GitHub
-- 🐦 **Share it** on social media
-- 📝 **Write a review** or blog post
-- 🤝 **Contribute** to the project
+**Manideep Reddy Eevuri**
 
 ---
 
-## 📞 Connect
-
-- **GitHub**: [@Maniredii](https://github.com/Maniredii)
-- **Issues**: [Report a bug](https://github.com/Maniredii/mani-calc/issues)
-- **Discussions**: [Ask questions](https://github.com/Maniredii/mani-calc/discussions)
-
----
-
-<div align="center">
-
-**Made with ❤️ for Windows productivity enthusiasts**
-
-*Let's change how people calculate on Windows!*
-
-[⬆ Back to Top](#-mani-calc)
-
-</div>
+Made with ❤️ for Windows users who love productivity!
